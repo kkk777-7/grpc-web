@@ -1,0 +1,13 @@
+version: '3'
+services:
+  proto:
+    container_name: proto
+    build:
+      context: ./docker/proto
+      dockerfile: Dockerfile
+    stdin_open: true
+    tty: true   
+    volumes:
+      - .:/proto
+    command: 
+   
