@@ -3,8 +3,8 @@ services:
   proto:
     container_name: proto
     build:
-      context: ./docker/proto
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./docker/proto/Dockerfile
     stdin_open: true
     tty: true   
     volumes:
@@ -12,12 +12,20 @@ services:
   server:
     container_name: server
     build:
-      context: ./docker/server
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./docker/server/Dockerfile
     volumes:
       - ./server:/go/src/grpc-web
     ports:
-      - "8080:8080"
+      - "9090:9090"
     depends_on:
       - proto
-   
+  envoy:
+    container_name: envoy-grpc-proxy
+    build:
+      context: .
+      dockerfile: ./docker/envoy/Dockerfile
+    ports:
+      - "8080:8080"
+    links:
+      - "server"
