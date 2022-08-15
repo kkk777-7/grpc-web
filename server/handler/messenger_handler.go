@@ -5,13 +5,13 @@ import (
 	"log"
 	"time"
 
-	pb "github.com/kkk777-7/grpc-web/messenger"
+	pb "github.com/kkk777-7/grpc-web/messenger/api/v1"
 	"google.golang.org/protobuf/types/known/emptypb"
 )
 
 type MessengerHandler struct {
 	pb.UnimplementedMessengerServer
-	requests []pb.MessageRequest
+	requests []*pb.MessageRequest
 }
 
 func NewMessengerHandler() *MessengerHandler {

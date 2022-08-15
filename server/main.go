@@ -10,10 +10,10 @@ import (
 	"google.golang.org/grpc/reflection"
 
 	"github.com/kkk777-7/grpc-web/handler"
-	pb "github.com/kkk777-7/grpc-web/messenger"
+	pb "github.com/kkk777-7/grpc-web/messenger/api/v1"
 )
 
-const port = ":8080"
+const port = ":9090"
 
 func main() {
 	lis, err := net.Listen("tcp", port)
